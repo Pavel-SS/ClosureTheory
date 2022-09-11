@@ -39,3 +39,30 @@
     firstPlayer()
     const secondPlayer = counterPoint('Сергей');
     secondPlayer()
+
+    // Задача с собеса 
+    // создать свой bind
+
+   const bind = (context, func) => {
+        return function(...args){
+            func.apply(context, args)
+        }
+   }
+
+   function personFn(){
+    console.log(`имя:${this.name} возраст:${this.age} специальность:${this.job}`)
+   }
+
+   const personFirst = {
+    name: 'Сергей',
+    age: 29,
+    job: 'FrontEnd Developer'
+   }
+   const personSecond = {
+    name: 'Михаил',
+    age: 35,
+    job: 'BackEnd Developer'
+   }
+
+   bind(personFirst, personFn)()
+   bind(personSecond, personFn)()
